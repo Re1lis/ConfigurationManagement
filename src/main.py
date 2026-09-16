@@ -40,7 +40,7 @@ class TerminalUNIXOS:
 
             match command_name:
                 case "ls":
-                    self.terminal.insert("end", command_name + " " + str(arguments) + "\n") # пишем после всего содержимого
+                    self.terminal.insert("end", command_name + " " + str(arguments) + "\n ") # пишем после всего содержимого
                 case "cd":
                     self.terminal.insert("end", command_name + " " + str(arguments) + "\n")
                 case "exit":

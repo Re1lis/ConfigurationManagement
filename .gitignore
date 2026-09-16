@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.vscode/
+.venv/
+venv/
+*.zip
+*.rar
+*.7z
+*.exe
+*.dll
