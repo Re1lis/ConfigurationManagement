@@ -1,0 +1,5 @@
+ls
+cd "test folder"
+cd "fold
+ls
+Unknown
