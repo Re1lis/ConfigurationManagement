@@ -3,7 +3,6 @@ __pycache__/
 .vscode/
 .venv/
 venv/
-*.zip
 *.rar
 *.7z
 *.exe
