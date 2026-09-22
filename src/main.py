@@ -24,10 +24,21 @@ class TerminalUNIXOS:
         self.hostname = socket.gethostname()
 
         self.window = tk.Tk()
+        self.window.configure(bg="#1e1e1e") # dark bg
         title = f"Эмулятор - [{self.username}@{self.hostname}]"
         self.window.title(title)
 
-        self.terminal = scrolledtext.ScrolledText(self.window) # создание текстового окна в главном окне 
+        self.terminal = scrolledtext.ScrolledText(
+            self.window,
+            bg="#1e1e1e",
+            fg="#d4d4d4",
+            insertbackground="white",
+            font=("Consolas", 12)
+        )
+
+        self.terminal.tag_configure("error", foreground="#ff5555")
+        self.terminal.tag_configure("unknown", foreground="#D2691E")
+
         self.terminal.pack()
 
         self.terminal.bind("<Return>", self.command_handler)
@@ -54,7 +65,7 @@ class TerminalUNIXOS:
         try:
             parts = shlex.split(command)
         except ValueError: # ошибка значения
-            self.terminal.insert("end", "Error: Invalid command syntax\n")
+            self.terminal.insert("end", "Error: Invalid command syntax\n", "error")
             return
 
         if parts:
@@ -69,7 +80,7 @@ class TerminalUNIXOS:
                 case "exit":
                     self.window.destroy() # закрытие окна
                 case _:
-                     self.terminal.insert("end", "Unknown command: " + command_name+ "\n")    
+                     self.terminal.insert("end", "Unknown command: " + command_name+ "\n", "unknown") # пишем после всего содержимого
 
         
            
